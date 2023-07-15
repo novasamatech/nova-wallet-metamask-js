@@ -95,12 +95,6 @@ class NovaWeb3Provider extends EventEmitter {
     return this.request({ method: "eth_requestAccounts", params: [] });
   }
 
-  send(method, params) {
-    if (this.isDebug) {
-      console.log(`==> send ${JSON.stringify(params)}`);
-    }
-  }
-
   /**
    * @deprecated Use request() method instead.
    */
