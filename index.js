@@ -72,6 +72,10 @@ class NovaWeb3Provider extends EventEmitter {
     this.isDebug = !!config.isDebug;
   }
 
+  isConnected() {
+    return this.rpc != null;
+  }
+
   request(payload) {
     // this points to window in methods like web3.eth.getAccounts()
     var that = this;
@@ -109,6 +113,8 @@ class NovaWeb3Provider extends EventEmitter {
       case "eth_chainId":
         response.result = this.eth_chainId();
         break;
+      case "wallet_addEthereumChain":
+        return this.wallet_addEthereumChain(payload);
       default:
         throw new ProviderRpcError(
           4200,
