@@ -95,6 +95,12 @@ class NovaWeb3Provider extends EventEmitter {
     return this.request({ method: "eth_requestAccounts", params: [] });
   }
 
+  send(method, params) {
+    if (this.isDebug) {
+      console.log(`==> send ${JSON.stringify(params)}`);
+    }
+  }
+
   /**
    * @deprecated Use request() method instead.
    */
@@ -113,8 +119,6 @@ class NovaWeb3Provider extends EventEmitter {
       case "eth_chainId":
         response.result = this.eth_chainId();
         break;
-      case "wallet_addEthereumChain":
-        return this.wallet_addEthereumChain(payload);
       default:
         throw new ProviderRpcError(
           4200,
