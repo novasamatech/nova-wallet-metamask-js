@@ -72,6 +72,10 @@ class NovaWeb3Provider extends EventEmitter {
     this.isDebug = !!config.isDebug;
   }
 
+  isConnected() {
+    return this.rpc != null;
+  }
+
   request(payload) {
     // this points to window in methods like web3.eth.getAccounts()
     var that = this;
