@@ -44,6 +44,8 @@ class NovaWeb3Provider extends EventEmitter {
         frame.ethereum.ready = !!address;
       }
     }
+
+    this.emit("accountsChanged", [this.address]);
   }
 
   setChainId(chainId) {
