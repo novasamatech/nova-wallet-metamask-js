@@ -44,10 +44,19 @@ class NovaWeb3Provider extends EventEmitter {
         frame.ethereum.ready = !!address;
       }
     }
+
+    this.emit("accountsChanged", [this.address]);
   }
 
   setChainId(chainId) {
     this.chainId = chainId;
+    this.emit("chainChanged", chainId);
+  }
+
+  updateChainId(chainId, rpcUrl) {
+    this.chainId = chainId;
+    this.rpc = new RPCServer(rpcUrl);
+    this.emit("chainChanged", chainId);
   }
 
   setRpcUrl(rpcUrl) {
