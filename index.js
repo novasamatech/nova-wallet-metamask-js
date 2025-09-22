@@ -25,6 +25,7 @@ class NovaWeb3Provider extends EventEmitter {
     this.wrapResults = new Map();
     this.isNovaWallet = true;
     this.isMetaMask = true;
+    this.isRainbow = true;
     this.isDebug = !!config.isDebug;
   }
 
